@@ -19,6 +19,10 @@ export default compose(
   lifecycle({
     componentDidMount() {
       this.props.fetchLineStatus()
+      this.intervalFetch = setInterval(() => this.props.fetchLineStatus(), 60000)
     },
+    componentWillUnmount() {
+      clearInterval(this.intervalFetch)
+    }
   }),
 )
