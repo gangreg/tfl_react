@@ -2,6 +2,8 @@
 
 import React from "react"
 import styled from "styled-components"
+import LineStatusDisplay from "../../atoms/LineStatusDisplay";
+import colours from '../../../config/colours'
 
 const Container = styled.div`
   display: flex;
@@ -13,14 +15,25 @@ const Title = styled.h1`
   font-size: 40px
 `
 
-export default class LiveTubePage extends React.PureComponent {
+type Props = {
+  lineStatus: Array<Object>
+}
+
+export default class LiveTubePage extends React.PureComponent<Props> {
   render() {
     return (
       <Container>
         <Title>
           Live Line Status
         </Title>
-        <pre>{JSON.stringify(this.props.lineStatus)}</pre>
+        {this.props.lineStatus.map(line => (
+          <LineStatusDisplay
+            line={line.name}
+            statusDesc={line.lineStatuses[0].statusSeverityDescription}
+            colour={colours[line.id]}
+            reason={line.lineStatuses[0].reason}
+          />
+        ))}
       </Container>
     )
   }
