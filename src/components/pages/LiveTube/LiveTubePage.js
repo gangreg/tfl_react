@@ -20,6 +20,7 @@ export default class LiveTubePage extends React.PureComponent {
         <Title>
           Live Line Status
         </Title>
+        <pre>{JSON.stringify(this.props.lineStatus)}</pre>
       </Container>
     )
   }
