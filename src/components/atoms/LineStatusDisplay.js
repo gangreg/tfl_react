@@ -8,6 +8,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 500px;
+  border-bottom: 1.5px solid;
 `
 
 const BoxContainer = styled.div`
